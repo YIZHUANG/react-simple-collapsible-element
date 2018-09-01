@@ -1,0 +1,9 @@
+.titleStyle {
+  border-top: 1px solid #e5e5e5;
+}
+.contentStyle:hover {
+  color: red;
+}
+.content-active-bg-color-red {
+  background-color: red;
+}

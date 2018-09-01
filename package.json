@@ -1,0 +1,46 @@
+{
+  "name": "react-simple-collapsible-element",
+  "version": "2.0.4",
+  "description": "simple react collapsible supports nested elements",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YIZHUANG/react-simple-collapsible-element.git"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build": "mkdir dist && babel src --out-dir dist"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/jestsetup.js"
+    ]
+  },
+  "author": "YIZHUANG",
+  "license": "MIT",
+  "dependencies": {
+    "prop-types": "^15.5.8"
+  },
+  "keywords": [
+    "collapsible",
+    "react-component",
+    "react"
+  ],
+  "peerDependencies": {
+    "react": "^0.14.9 || ^15.3.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.2",
+    "babel-core": "^6.17.0",
+    "babel-plugin-transform-class-properties": "^6.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "webpack": "^2.5.1"
+  }
+}
