@@ -6,7 +6,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.5",
-    "react-simple-collapsible-element": "^1.2.10"
+    "react-simple-collapsible-element": "^2.0.5"
   },
   "scripts": {
     "start": "react-scripts start",
