@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Collapsible from 'react-simple-collapsible-element';
+import Collapsible from './lib/Collapsible';
 
 import './ExampleTwo.css';
 
@@ -11,7 +11,7 @@ class ExampleTwo extends Component {
         titleStyle: 'titleStyle',
         content:
           'That line of code is written in the Python programming language. Put simply, a programming (or coding) language is a set of syntax rules that define how code should be written and formatted. Thousands of different programming languages make it possible for us to create computer software, apps and websites.',
-        contentStyle: { marginBottom: 20 }
+        contentStyle: { marginBottom: 20 },
       },
       {
         title: 'How do I learn to code?',
@@ -25,7 +25,7 @@ class ExampleTwo extends Component {
                 <li>Figure Out Why You Want to Learn to Code.</li>
                 <li>Choose the Right Language. ...</li>
               </ul>
-            )
+            ),
           },
           {
             title: <li>But There is a shortcut</li>,
@@ -38,7 +38,7 @@ class ExampleTwo extends Component {
                   </ul>
                 ),
                 content: 'Go to a bootcamp',
-                activeContentStyle: 'contentActiveStyle--margin-left'
+                activeContentStyle: 'contentActiveStyle--margin-left',
               },
               {
                 title: (
@@ -47,17 +47,23 @@ class ExampleTwo extends Component {
                   </ul>
                 ),
                 content: 'Find a mentor',
-                activeContentStyle: 'contentActiveStyle--margin-left'
-              }
-            ]
-          }
-        ]
-      }
+                activeContentStyle: 'contentActiveStyle--margin-left',
+              },
+            ],
+          },
+        ],
+      },
     ];
     return (
       <div style={{ marginLeft: 40, marginTop: 20, maxWidth: 400 }}>
-        <h1 style={{ textAlign: 'center' }}>Example two</h1>
-        <Collapsible data={data} />
+        <h1 style={{ textAlign: 'center' }}>
+          Example two<strong>(keep open and custom transition)</strong>
+        </h1>
+        <Collapsible
+          data={data}
+          customTransition="height .1s ease-out"
+          keepOpen
+        />
       </div>
     );
   }

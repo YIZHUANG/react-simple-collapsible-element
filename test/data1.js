@@ -20,7 +20,7 @@ export default [
       </div>
     ),
     contentStyle: { marginBottom: 20 },
-    activeContentStyle: 'content-active-bg-color-red'
+    activeContentStyle: 'content-active-bg-color-red',
   },
   {
     title: 'How do you whiten white clothes?',
@@ -40,6 +40,6 @@ export default [
         </ul>
       </div>
     ),
-    contentStyle: 'contentStyle'
-  }
+    contentStyle: 'contentStyle',
+  },
 ];

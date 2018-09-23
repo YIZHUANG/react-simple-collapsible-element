@@ -5,7 +5,14 @@ import Content from './Content';
 import Title from './Title';
 import { checkIfActive } from './util';
 
-function renderNestedElements(items, index, currentActiveIndex, onCollapse) {
+function renderNestedElements(
+  items,
+  index,
+  currentActiveIndex,
+  onCollapse,
+  keepOpen = false,
+  customTransition = '',
+) {
   if (!Array.isArray(items)) {
     throw new Error('nested elements must be an array');
   }
@@ -20,15 +27,18 @@ function renderNestedElements(items, index, currentActiveIndex, onCollapse) {
             titleStyle={titleStyle}
             index={`${index}-${nestedindex}`}
             text={item.title}
-            active={checkIfActive(currentActiveIndex, index)}
+            active={checkIfActive(currentActiveIndex, index, keepOpen)}
             activeTitleStyle={item.activeTitleStyle}
+            customTransition={customTransition}
             isNested
           />
           {renderNestedElements(
             item.content,
             `${index}-${nestedindex}`,
             currentActiveIndex,
-            onCollapse
+            onCollapse,
+            keepOpen,
+            customTransition,
           )}
         </div>
       );
@@ -40,23 +50,36 @@ function renderNestedElements(items, index, currentActiveIndex, onCollapse) {
           onCollapse={onCollapse}
           index={`${index}-${nestedindex}`}
           text={item.title}
-          active={checkIfActive(currentActiveIndex, index)}
+          active={checkIfActive(currentActiveIndex, index, keepOpen)}
           activeTitleStyle={item.activeTitleStyle}
+          customTransition={customTransition}
           isNested
         />
         <Content
           contentStyle={contentStyle}
           index={`${index}-${nestedindex}`}
-          active={checkIfActive(currentActiveIndex, `${index}-${nestedindex}`)}
+          active={checkIfActive(
+            currentActiveIndex,
+            `${index}-${nestedindex}`,
+            keepOpen,
+          )}
           text={item.content}
           activeContentStyle={item.activeContentStyle}
+          customTransition={customTransition}
         />
       </div>
     );
   });
 }
 
-const CollapsePane = ({ index, items, currentActiveIndex, onCollapse }) => {
+const CollapsePane = ({
+  index,
+  items,
+  currentActiveIndex,
+  onCollapse,
+  keepOpen,
+  customTransition,
+}) => {
   const titleStyle = items.titleStyle || {};
   const contentStyle = items.contentStyle || {};
   return (
@@ -66,20 +89,24 @@ const CollapsePane = ({ index, items, currentActiveIndex, onCollapse }) => {
         index={index}
         onCollapse={onCollapse}
         text={items.title}
+        customTransition={customTransition}
       />
       {!Array.isArray(items.content) ? (
         <Content
-          active={checkIfActive(currentActiveIndex, index)}
+          active={checkIfActive(currentActiveIndex, index, keepOpen)}
           text={items.content}
           contentStyle={contentStyle}
           activeContentStyle={items.activeContentStyle}
+          customTransition={customTransition}
         />
       ) : (
         renderNestedElements(
           items.content,
           index,
           currentActiveIndex,
-          onCollapse
+          onCollapse,
+          keepOpen,
+          customTransition,
         )
       )}
     </div>
@@ -88,14 +115,32 @@ const CollapsePane = ({ index, items, currentActiveIndex, onCollapse }) => {
 
 CollapsePane.propTypes = {
   index: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  items: PropTypes.object.isRequired,
-  currentActiveIndex: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  onCollapse: PropTypes.func
+  items: PropTypes.shape({
+    title: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element,
+    ]),
+    content: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element,
+      PropTypes.array,
+    ]),
+  }).isRequired,
+  currentActiveIndex: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.array,
+  ]),
+  keepOpen: PropTypes.bool,
+  customTransition: PropTypes.string,
+  onCollapse: PropTypes.func,
 };
 
 CollapsePane.defaultProps = {
   currentActiveIndex: undefined,
-  onCollapse: () => {}
+  keepOpen: false,
+  customTransition: '',
+  onCollapse: () => {},
 };
 
 export default CollapsePane;

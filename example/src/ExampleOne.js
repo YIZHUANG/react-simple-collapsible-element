@@ -25,7 +25,7 @@ class ExampleOne extends Component {
           </div>
         ),
         contentStyle: { marginBottom: 20 },
-        activeContentStyle: 'content-active-bg-color-red'
+        activeContentStyle: 'content-active-bg-color-red',
       },
       {
         title: 'How do you whiten white clothes?',
@@ -45,12 +45,14 @@ class ExampleOne extends Component {
             </ul>
           </div>
         ),
-        contentStyle: 'contentStyle'
-      }
+        contentStyle: 'contentStyle',
+      },
     ];
     return (
       <div style={{ marginLeft: 40, marginTop: 20, maxWidth: 400 }}>
-        <h1 style={{ textAlign: 'center' }}>Example one</h1>
+        <h1 style={{ textAlign: 'center' }}>
+          Example one <strong>(default)</strong>
+        </h1>
         <Collapsible data={data} />
       </div>
     );

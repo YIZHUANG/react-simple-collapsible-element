@@ -63,16 +63,18 @@ const data = [
   }
 ];
 
-return <Collapsible data={data} />;
+return <Collapsible keepOpen={true or false} data={data} />;
 ```
 
 ## Props
 
-| Name                 | Type              | Default     | Description                                            |
-| :------------------- | :---------------- | :---------- | :----------------------------------------------------- |
-| `title`              | `Element`         | `'div'`     | parent                                                 |
-| `content`            | `Element / array` | `div`       | child                                                  |
-| `titleStyle`         | `String / Object` | `undefined` | Can be a style object or multiple classnames together. |
-| `contentStyle`       | `String / Object` | `undefined` | Can be a style object or multiple classnames together. |
-| `activeTitleStyle`   | `String`          | `undefined` | a classname to pass to when the title is active.       |
-| `activeContentStyle` | `String`          | `undefined` | a classname to pass to when the content is active.     |
+| Name                 | Type              | Default               | Description                                                              |
+| :------------------- | :---------------- | :-------------------- | :----------------------------------------------------------------------- |
+| `title`              | `Element`         | `'div'`               | parent                                                                   |
+| `content`            | `Element / array` | `div`                 | child                                                                    |
+| `keepOpen`           | `bool`            | `false`               | whether or not keep the current element open when click on other element |
+| `customTransition`   | `String`          | `height .3s ease-out` | custom transition                                                        |
+| `titleStyle`         | `String / Object` | `undefined`           | Can be a style object or multiple classnames together.                   |
+| `contentStyle`       | `String / Object` | `undefined`           | Can be a style object or multiple classnames together.                   |
+| `activeTitleStyle`   | `String`          | `undefined`           | a classname to pass to when the title is active.                         |
+| `activeContentStyle` | `String`          | `undefined`           | a classname to pass to when the content is active.                       |

@@ -1,26 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/* eslint-disable react/no-did-mount-set-state */
+/* eslint-disable react/no-did-update-set-state */
 export default class Title extends React.PureComponent {
   static propTypes = {
     text: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
-      PropTypes.element
+      PropTypes.element,
     ]).isRequired,
     onCollapse: PropTypes.func.isRequired,
     isNested: PropTypes.bool,
     index: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     active: PropTypes.bool,
     titleStyle: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    activeTitleStyle: PropTypes.string
+    activeTitleStyle: PropTypes.string,
+    customTransition: PropTypes.string,
   };
 
   static defaultProps = {
     active: false,
     isNested: false,
     titleStyle: undefined,
-    activeTitleStyle: undefined
+    activeTitleStyle: undefined,
+    customTransition: '',
   };
   constructor() {
     super();
@@ -44,7 +48,8 @@ export default class Title extends React.PureComponent {
       isNested,
       active,
       titleStyle,
-      activeTitleStyle
+      activeTitleStyle,
+      customTransition,
     } = this.props;
     const classNames = typeof titleStyle === 'string' ? titleStyle : '';
     const style = classNames ? {} : titleStyle;
@@ -55,9 +60,9 @@ export default class Title extends React.PureComponent {
         onClick={() => onCollapse(index)}
         style={{
           height: isNested && !active ? 0 : this.state.height,
-          transition: 'height .3s ease-out',
+          transition: customTransition || 'height .3s ease-out',
           overflow: 'hidden',
-          ...style
+          ...style,
         }}
         ref={this.titleRef}
         className={

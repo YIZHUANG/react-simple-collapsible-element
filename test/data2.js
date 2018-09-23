@@ -6,7 +6,7 @@ export default [
     titleStyle: 'titleStyle',
     content:
       'That line of code is written in the Python programming language. Put simply, a programming (or coding) language is a set of syntax rules that define how code should be written and formatted. Thousands of different programming languages make it possible for us to create computer software, apps and websites.',
-    contentStyle: { marginBottom: 20 }
+    contentStyle: { marginBottom: 20 },
   },
   {
     title: 'How do I learn to code?',
@@ -20,7 +20,7 @@ export default [
             <li>Figure Out Why You Want to Learn to Code.</li>
             <li>Choose the Right Language. ...</li>
           </ul>
-        )
+        ),
       },
       {
         title: <li>But There is a shortcut</li>,
@@ -33,7 +33,7 @@ export default [
               </ul>
             ),
             content: 'Go to a bootcamp',
-            activeContentStyle: 'contentActiveStyle--margin-left'
+            activeContentStyle: 'contentActiveStyle--margin-left',
           },
           {
             title: (
@@ -42,10 +42,10 @@ export default [
               </ul>
             ),
             content: 'Find a mentor',
-            activeContentStyle: 'contentActiveStyle--margin-left'
-          }
-        ]
-      }
-    ]
-  }
+            activeContentStyle: 'contentActiveStyle--margin-left',
+          },
+        ],
+      },
+    ],
+  },
 ];

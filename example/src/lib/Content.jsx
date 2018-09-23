@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/* eslint-disable react/no-did-mount-set-state */
+/* eslint-disable react/no-did-update-set-state */
 export default class Content extends React.PureComponent {
   static propTypes = {
     text: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
-      PropTypes.element
+      PropTypes.element,
     ]).isRequired,
     active: PropTypes.bool,
     contentStyle: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    activeContentStyle: PropTypes.string
+    activeContentStyle: PropTypes.string,
+    customTransition: PropTypes.string,
   };
 
   static defaultProps = {
     active: false,
     contentStyle: undefined,
-    activeContentStyle: undefined
+    activeContentStyle: undefined,
+    customTransition: '',
   };
 
   constructor() {
@@ -34,16 +38,22 @@ export default class Content extends React.PureComponent {
     }
   }
   render() {
-    const { text, active, contentStyle, activeContentStyle } = this.props;
+    const {
+      text,
+      active,
+      contentStyle,
+      activeContentStyle,
+      customTransition,
+    } = this.props;
     const classNames = typeof contentStyle === 'string' ? contentStyle : '';
     const style = classNames ? {} : contentStyle;
     return (
       <div
         style={{
           height: active ? this.state.height : 0,
-          transition: 'height .3s ease-out',
+          transition: customTransition || 'height .3s ease-out',
           overflow: 'hidden',
-          ...style
+          ...style,
         }}
         ref={this.contentRef}
         className={
