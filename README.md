@@ -1,6 +1,6 @@
 # react-simple-collapsible-element
 
-[![NPM version](NPM)](https://www.npmjs.com/package/react-simple-collapsible-element)
+[![npm Version](https://image.ibb.co/fU7OeK/We_Chat_Screenshot_20180929205959.png)](https://www.npmjs.com/package/react-simple-collapsible-element)
 
 [Demo](http://dashing-attention.surge.sh/).
 

@@ -4,7 +4,7 @@ import ReactGA from 'react-ga';
 
 import './ExampleTwo.css';
 
-class ExampleTwo extends Component {
+class ExampleThree extends Component {
   render() {
     const data = [
       {
@@ -14,13 +14,13 @@ class ExampleTwo extends Component {
             onKeyPress={() =>
               ReactGA.event({
                 category: 'click event',
-                action: 'clicks on keep open'
+                action: 'clicks on custom transition'
               })
             }
             onClick={() =>
               ReactGA.event({
                 category: 'click event',
-                action: 'clicks on keep open'
+                action: 'clicks on custom transition'
               })
             }
           >
@@ -76,16 +76,12 @@ class ExampleTwo extends Component {
     return (
       <div style={{ marginLeft: 40, marginTop: 20, maxWidth: 400 }}>
         <h1 style={{ textAlign: 'center' }}>
-          Example two<strong>(keep open and custom transition)</strong>
+          Example three<strong>(custom transition)</strong>
         </h1>
-        <Collapsible
-          data={data}
-          customTransition="height .1s ease-out"
-          keepOpen
-        />
+        <Collapsible data={data} customTransition="height .4s ease-out" />
       </div>
     );
   }
 }
 
-export default ExampleTwo;
+export default ExampleThree;

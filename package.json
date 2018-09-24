@@ -1,6 +1,6 @@
 {
   "name": "react-simple-collapsible-element",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "simple react collapsible supports nested elements",
   "main": "index.js",
   "repository": {
@@ -13,8 +13,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "clean": "rimraf dist",
-    "makeFolder":"mkdir dist",
-    "makeFiles":"babel src --out-dir dist",
+    "makeFolder": "mkdir dist",
+    "makeFiles": "babel src --out-dir dist",
     "build": "npm run clean && npm run makeFolder && npm run makeFiles"
   },
   "jest": {
