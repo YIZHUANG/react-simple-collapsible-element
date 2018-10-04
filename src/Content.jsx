@@ -5,11 +5,7 @@ import PropTypes from 'prop-types';
 /* eslint-disable react/no-did-update-set-state */
 export default class Content extends React.PureComponent {
   static propTypes = {
-    text: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-      PropTypes.element,
-    ]).isRequired,
+    text: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.element]).isRequired,
     active: PropTypes.bool,
     contentStyle: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     activeContentStyle: PropTypes.string,
@@ -39,27 +35,21 @@ export default class Content extends React.PureComponent {
   }
   render() {
     const {
-      text,
-      active,
-      contentStyle,
-      activeContentStyle,
-      customTransition,
+      text, active, contentStyle, activeContentStyle, customTransition,
     } = this.props;
     const classNames = typeof contentStyle === 'string' ? contentStyle : '';
     const style = classNames ? {} : contentStyle;
     return (
       <div
         style={{
+          ...style,
           height: active ? this.state.height : 0,
           transition: customTransition || 'height .3s ease-out',
           overflow: 'hidden',
-          ...style,
         }}
         ref={this.contentRef}
         className={
-          active && activeContentStyle
-            ? `${classNames} ${activeContentStyle}`
-            : classNames
+          active && activeContentStyle ? `${classNames} ${activeContentStyle}` : classNames
         }
       >
         {text}

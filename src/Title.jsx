@@ -5,11 +5,7 @@ import PropTypes from 'prop-types';
 /* eslint-disable react/no-did-update-set-state */
 export default class Title extends React.PureComponent {
   static propTypes = {
-    text: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-      PropTypes.element,
-    ]).isRequired,
+    text: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.element]).isRequired,
     onCollapse: PropTypes.func.isRequired,
     isNested: PropTypes.bool,
     index: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -59,10 +55,10 @@ export default class Title extends React.PureComponent {
         onKeyPress={() => onCollapse(index)}
         onClick={() => onCollapse(index)}
         style={{
+          ...style,
           height: isNested && !active ? 0 : this.state.height,
           transition: customTransition || 'height .3s ease-out',
           overflow: 'hidden',
-          ...style,
         }}
         ref={this.titleRef}
         className={

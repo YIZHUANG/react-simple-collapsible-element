@@ -24,14 +24,19 @@ import Collapsible from 'react-simple-collapsible-element';
 const data = [
   {
     title: 'title 1',
-    content: 'content 1'
+    content: 'content 1',
   },
   {
-    title: 'title 2',
+    title: <h1>title 2</h1>,
     contentStyle: { backgroundColor: 'red' }, // can be a classname also.
     activeContentStyle: 'activeContentStyle', // classname
-    content: 'content 2'
-  }
+    content: (
+      <ul>
+        <li>content 2</li>
+        <li>content 2</li>
+      </ul>
+    ),
+  },
 ];
 
 return <Collapsible data={data} />;
