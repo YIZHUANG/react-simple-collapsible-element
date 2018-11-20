@@ -34,9 +34,6 @@
     "FAQ",
     "collapse"
   ],
-  "peerDependencies": {
-    "react": "^0.14.9 || ^15.3.0 || ^16.0.0"
-  },
   "devDependencies": {
     "babel-cli": "^6.5.2",
     "babel-core": "^6.17.0",
