@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// eslint-disable-next-line
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import CollapseContainer from './CollapseContainer';
-import CollapsePane from './CollapsePane';
+import CollapseContainer from "./CollapseContainer";
+import CollapsePane from "./CollapsePane";
 
 class Collapsible extends Component {
   static propTypes = {
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
     keepOpen: PropTypes.bool,
-    customTransition: PropTypes.string,
+    customTransition: PropTypes.string
   };
   static defaultProps = {
     keepOpen: false,
-    customTransition: undefined,
+    customTransition: undefined
   };
   constructor({ keepOpen }) {
     super();
-    this.state = { currentActiveIndex: keepOpen ? [] : '' };
+    this.state = { currentActiveIndex: keepOpen ? [] : "" };
     this.onCollapse = this.onCollapse.bind(this);
   }
   onCollapse(index) {
@@ -31,25 +32,29 @@ class Collapsible extends Component {
     const { currentActiveIndex } = this.state;
     if (currentActiveIndex.indexOf(index.toString()) < 0) {
       this.setState({
-        currentActiveIndex: [index.toString(), ...currentActiveIndex],
+        currentActiveIndex: [index.toString(), ...currentActiveIndex]
       });
     } else {
       this.setState({
-        currentActiveIndex: currentActiveIndex.filter(activeIndex =>
-          activeIndex.indexOf(index.toString()) < 0),
+        currentActiveIndex: currentActiveIndex.filter(
+          activeIndex => activeIndex.indexOf(index.toString()) < 0
+        )
       });
     }
   }
   defaultCollapse(index) {
     const { currentActiveIndex } = this.state;
-    if (currentActiveIndex.toString() === index.toString() && index.length > 1) {
+    if (
+      currentActiveIndex.toString() === index.toString() &&
+      index.length > 1
+    ) {
       this.setState({
-        currentActiveIndex: index.slice(0, index.length - 2),
+        currentActiveIndex: index.slice(0, index.length - 2)
       });
     } else if (currentActiveIndex.toString() !== index.toString()) {
       this.setState({ currentActiveIndex: index });
     } else {
-      this.setState({ currentActiveIndex: '' });
+      this.setState({ currentActiveIndex: "" });
     }
   }
   render() {
@@ -62,6 +67,7 @@ class Collapsible extends Component {
         >
           {data.map((item, index) => (
             <CollapsePane
+              // eslint-disable-next-line
               key={`collapse-pane-${index}`}
               items={item}
               index={index}

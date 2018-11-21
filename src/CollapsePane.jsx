@@ -1,9 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// eslint-disable-next-line
+import React from "react";
+import PropTypes from "prop-types";
 
-import Content from './Content';
-import Title from './Title';
-import { checkIfActive } from './util';
+import Content from "./Content";
+import Title from "./Title";
+import { checkIfActive } from "./util";
 
 function renderNestedElements(
   items,
@@ -11,16 +12,17 @@ function renderNestedElements(
   currentActiveIndex,
   onCollapse,
   keepOpen = false,
-  customTransition = '',
+  customTransition = ""
 ) {
   if (!Array.isArray(items)) {
-    throw new Error('nested elements must be an array');
+    throw new Error("nested elements must be an array");
   }
   return items.map((item, nestedindex) => {
     const titleStyle = item.titleStyle || {};
     const contentStyle = item.contentStyle || {};
     if (Array.isArray(item.content)) {
       return (
+        // eslint-disable-next-line
         <div key={nestedindex}>
           <Title
             onCollapse={onCollapse}
@@ -38,12 +40,13 @@ function renderNestedElements(
             currentActiveIndex,
             onCollapse,
             keepOpen,
-            customTransition,
+            customTransition
           )}
         </div>
       );
     }
     return (
+      // eslint-disable-next-line
       <div key={nestedindex}>
         <Title
           titleStyle={titleStyle}
@@ -61,7 +64,7 @@ function renderNestedElements(
           active={checkIfActive(
             currentActiveIndex,
             `${index}-${nestedindex}`,
-            keepOpen,
+            keepOpen
           )}
           text={item.content}
           activeContentStyle={item.activeContentStyle}
@@ -78,7 +81,7 @@ const CollapsePane = ({
   currentActiveIndex,
   onCollapse,
   keepOpen,
-  customTransition,
+  customTransition
 }) => {
   const titleStyle = items.titleStyle || {};
   const contentStyle = items.contentStyle || {};
@@ -106,7 +109,7 @@ const CollapsePane = ({
           currentActiveIndex,
           onCollapse,
           keepOpen,
-          customTransition,
+          customTransition
         )
       )}
     </div>
@@ -116,31 +119,28 @@ const CollapsePane = ({
 CollapsePane.propTypes = {
   index: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   items: PropTypes.shape({
-    title: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.element,
-    ]),
+    title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
     content: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.element,
-      PropTypes.array,
-    ]),
+      PropTypes.array
+    ])
   }).isRequired,
   currentActiveIndex: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-    PropTypes.array,
+    PropTypes.array
   ]),
   keepOpen: PropTypes.bool,
   customTransition: PropTypes.string,
-  onCollapse: PropTypes.func,
+  onCollapse: PropTypes.func
 };
 
 CollapsePane.defaultProps = {
   currentActiveIndex: undefined,
   keepOpen: false,
-  customTransition: '',
-  onCollapse: () => {},
+  customTransition: "",
+  onCollapse: () => {}
 };
 
 export default CollapsePane;

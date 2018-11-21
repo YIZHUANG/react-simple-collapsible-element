@@ -1,18 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// eslint-disable-next-line
+import React from "react";
+import PropTypes from "prop-types";
 
 /* eslint-disable react/no-did-mount-set-state */
 /* eslint-disable react/no-did-update-set-state */
 export default class Title extends React.PureComponent {
   static propTypes = {
-    text: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.element]).isRequired,
+    text: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.element
+    ]).isRequired,
     onCollapse: PropTypes.func.isRequired,
     isNested: PropTypes.bool,
     index: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     active: PropTypes.bool,
     titleStyle: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     activeTitleStyle: PropTypes.string,
-    customTransition: PropTypes.string,
+    customTransition: PropTypes.string
   };
 
   static defaultProps = {
@@ -20,7 +25,7 @@ export default class Title extends React.PureComponent {
     isNested: false,
     titleStyle: undefined,
     activeTitleStyle: undefined,
-    customTransition: '',
+    customTransition: ""
   };
   constructor() {
     super();
@@ -45,9 +50,9 @@ export default class Title extends React.PureComponent {
       active,
       titleStyle,
       activeTitleStyle,
-      customTransition,
+      customTransition
     } = this.props;
-    const classNames = typeof titleStyle === 'string' ? titleStyle : '';
+    const classNames = typeof titleStyle === "string" ? titleStyle : "";
     const style = classNames ? {} : titleStyle;
     return (
       <div
@@ -57,8 +62,8 @@ export default class Title extends React.PureComponent {
         style={{
           ...style,
           height: isNested && !active ? 0 : this.state.height,
-          transition: customTransition || 'height .3s ease-out',
-          overflow: 'hidden',
+          transition: customTransition || "height .3s ease-out",
+          overflow: "hidden"
         }}
         ref={this.titleRef}
         className={
