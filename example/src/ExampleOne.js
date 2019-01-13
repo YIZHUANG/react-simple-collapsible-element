@@ -1,42 +1,40 @@
-import React, { Component } from 'react';
-import Collapsible from 'react-simple-collapsible-element';
-import ReactGA from 'react-ga';
+import React, { Component } from "react";
+import Collapsible from "./Collapsible";
+import ReactGA from "react-ga";
 
-import './ExampleOne.css';
+import "./ExampleOne.css";
 
 class ExampleOne extends Component {
   render() {
     const data = [
       {
-        title: (
+        title: open => (
           <div
             presentation="role"
             onKeyPress={() =>
               ReactGA.event({
-                category: 'click event',
-                action: 'clicks on default'
+                category: "click event",
+                action: "clicks on default"
               })
             }
             onClick={() =>
               ReactGA.event({
-                category: 'click event',
-                action: 'clicks on default'
+                category: "click event",
+                action: "clicks on default"
               })
             }
           >
             How long do you soak clothes in bleach?
+            {open ? <span style={{ color: "orange" }}>It's open!</span> : ""}
           </div>
         ),
-        titleStyle: 'titleStyle',
-        content: (
+        titleStyle: "titleStyle",
+        content: open => (
           <div>
+            {open ? <span style={{ color: "orange" }}>It's open!</span> : ""}
             <p style={{ fontSize: 16 }}>
-              {' '}
+              {" "}
               Add 1/4 cup of bleach to 1 gallon of water and soak the clothes
-              for only 5 to 10 minutes; any more, and you'll start to break down
-              the fabric. If you have stains on pastel, colorfast clothes, try
-              soaking them in all-fabric bleach, which is gentler than chlorine
-              bleach.Apr 2, 2013
             </p>
             <a href="http://articles.chicagotribune.com/2013-04-02/features/sc-fam-0402-lifeskill-bleach-20130402_1_bleach-clothes-care-labels">
               How to bleach your clothes - tribunedigital-chicagotribune
@@ -44,11 +42,11 @@ class ExampleOne extends Component {
           </div>
         ),
         contentStyle: { marginBottom: 20 },
-        activeContentStyle: 'content-active-bg-color-red'
+        activeContentStyle: "content-active-bg-color-red"
       },
       {
-        title: 'How do you whiten white clothes?',
-        titleStyle: 'titleStyle',
+        title: "How do you whiten white clothes?",
+        titleStyle: "titleStyle",
         content: (
           <div>
             <h2>Method 2 Using Natural Household Supplies</h2>
@@ -64,12 +62,12 @@ class ExampleOne extends Component {
             </ul>
           </div>
         ),
-        contentStyle: 'contentStyle'
+        contentStyle: "contentStyle"
       }
     ];
     return (
       <div style={{ marginLeft: 40, marginTop: 20, maxWidth: 400 }}>
-        <h1 style={{ textAlign: 'center' }}>
+        <h1 style={{ textAlign: "center" }}>
           Example one <strong>(default)</strong>
         </h1>
         <Collapsible data={data} />

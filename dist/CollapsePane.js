@@ -72,6 +72,7 @@ var CollapsePane = function(a) {
     "div",
     null,
     _react2.default.createElement(_Title2.default, {
+      active: (0, _util.checkIfActive)(d, b, f),
       titleStyle: h,
       index: b,
       onCollapse: e,
@@ -97,12 +98,14 @@ var CollapsePane = function(a) {
   items: _propTypes2.default.shape({
     title: _propTypes2.default.oneOfType([
       _propTypes2.default.string,
-      _propTypes2.default.element
+      _propTypes2.default.element,
+      _propTypes2.default.func
     ]),
     content: _propTypes2.default.oneOfType([
       _propTypes2.default.string,
       _propTypes2.default.element,
-      _propTypes2.default.array
+      _propTypes2.default.array,
+      _propTypes2.default.func
     ])
   }).isRequired,
   currentActiveIndex: _propTypes2.default.oneOfType([

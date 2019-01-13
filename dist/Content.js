@@ -102,7 +102,7 @@ function _inherits(a, b) {
               ref: this.contentRef,
               className: c && e ? g + " " + e : g
             },
-            b
+            "function" == typeof b ? b(c) : b
           );
         }
       }
@@ -114,7 +114,8 @@ function _inherits(a, b) {
   text: _propTypes2.default.oneOfType([
     _propTypes2.default.string,
     _propTypes2.default.number,
-    _propTypes2.default.element
+    _propTypes2.default.element,
+    _propTypes2.default.func
   ]).isRequired,
   active: _propTypes2.default.bool,
   contentStyle: _propTypes2.default.oneOfType([
