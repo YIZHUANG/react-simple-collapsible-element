@@ -1,6 +1,6 @@
 {
   "name": "react-simple-collapsible-element",
-  "version": "2.0.11",
+  "version": "3.0.0",
   "description": "simple react collapsible supports nested elements",
   "main": "index.js",
   "repository": {
