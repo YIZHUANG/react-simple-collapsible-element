@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Collapsible from "./Collapsible";
+import Collapsible from "react-simple-collapsible-element";
 import ReactGA from "react-ga";
 
 import "./ExampleTwo.css";
