@@ -38,7 +38,11 @@
     "react-component",
     "react",
     "FAQ",
-    "collapse"
+    "collapse",
+    "accordion",
+    "lightweight",
+    "open",
+    "close"
   ],
   "devDependencies": {
     "babel-cli": "^6.26.0",
